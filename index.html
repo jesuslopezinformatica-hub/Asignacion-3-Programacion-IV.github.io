@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Estudiantil</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Portal de Autogestión Estudiantil</h1>
+
+    <div class="promedio">
+        <h3>Promedio General</h3>
+        <p id="promedio"></p>
+    </div>
+
+    <h3>Datos del Estudiante</h3>
+
+    <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+
+    <p><strong>Carrera:</strong> <span id="carrera"></span></p>
+
+    <h3>Historial Académico</h3>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Materia</th>
+                <th>Nota</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tabla">
+
+        </tbody>
+
+    </table>
+
+    <br>
+
+    <button id="btnTodas">Ver Todas</button>
+
+    <button id="btnReprobadas">Ver Reprobadas</button>
+
+    <button id="btnCerrar">Cerrar Sesión</button>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
