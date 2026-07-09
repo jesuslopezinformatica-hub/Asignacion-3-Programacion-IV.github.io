@@ -21,7 +21,7 @@ if (sesion == null || !sesion.token_acceso) {
     document.getElementById("btnIniciar").addEventListener("click", function() {
         sessionStorage.setItem("estudiante", JSON.stringify(cuentaEstudiante));
         alert("Sesión iniciada con éxito.");
-        window.location.reload();
+        window.location.reload(); 
     });
 
     throw new Error("Sesión no iniciada. Código detenido.");
@@ -29,7 +29,6 @@ if (sesion == null || !sesion.token_acceso) {
 
 document.getElementById("nombre").textContent = sesion.nombre;
 document.getElementById("carrera").textContent = sesion.carrera;
-
 
 const historialAcademico = [
     { materia: "Programación IV", nota: 18 },
@@ -39,31 +38,33 @@ const historialAcademico = [
     { materia: "Diseño Web", nota: 15 }
 ];
 
-
 function mostrarTabla(lista) {
     let tabla = document.getElementById("tabla");
-    tabla.innerHTML = "";
+    tabla.innerHTML = ""; 
+
+    let htmlContenido = "";
 
     for (const materia of lista) {
-        tabla.innerHTML += `
+        
+        let claseNota = "";
+        if (materia.nota < 10) {
+            claseNota = "reprobada"; 
+        } else {
+            claseNota = "aprobada";  
+        }
+
+        
+        htmlContenido += `
         <tr>
             <td>${materia.materia}</td>
-            <td>${materia.nota}</td>
+            <td class="${claseNota}">${materia.nota}</td>
         </tr>
         `;
     }
 
-    let filas = tabla.getElementsByTagName("tr");
-
-    for (let i = 0; i < filas.length; i++) {
-        let nota = filas[i].children[1];
-        if (parseInt(nota.textContent) < 10) {
-            nota.classList.add("reprobada");
-        } else {
-            nota.classList.add("aprobada");
-        }
-    }
+    tabla.innerHTML = htmlContenido;
 }
+
 
 function calcularPromedio() {
     let suma = 0;
@@ -73,26 +74,28 @@ function calcularPromedio() {
     let promedio = suma / historialAcademico.length;
     document.getElementById("promedio").textContent = promedio.toFixed(2);
 }
+
+
 mostrarTabla(historialAcademico);
 calcularPromedio();
 
 
 document.getElementById("btnTodas").addEventListener("click", function() {
-    mostrarTabla(historialAcademico);
+    mostrarTabla(historialAcademico); 
 });
 
 document.getElementById("btnReprobadas").addEventListener("click", function() {
     let reprobadas = historialAcademico.filter(function(materia) {
         return materia.nota < 10;
     });
-    mostrarTabla(reprobadas);
+    mostrarTabla(reprobadas); 
 });
 
-document.getElementById("btnCerrar").addEventListener("click", function() {
-
+document.getElementById("btnCerrar").addEventListener("click", function() 
+{
     sessionStorage.clear();
     
     alert("Sesión cerrada.");
     
-    window.location.reload();
+    window.location.reload(); 
 });
